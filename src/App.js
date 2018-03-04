@@ -6,6 +6,7 @@ class App extends Component {
     return (
       <div>
         <h1>HeatScore</h1>
+        <h2>Prove</h2>
       </div>
     );
   }
