@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A web aplication that will give Gubernamental and Not Gubernamental Institutes a better way to evaluate projects and posters.",
   "dependencies": {
+    "lodash": "^4.17.5",
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.31.5",
