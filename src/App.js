@@ -6,13 +6,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h1>HeatScore</h1>
-          <h2>Prove</h2>
-        </div>
-        <div>
-          <LandingPage/>
-        </div>
+        <LandingPage/>
       </div>
     );
   }

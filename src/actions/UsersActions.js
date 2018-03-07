@@ -16,9 +16,13 @@ export function getUsers(){
   }
 }
 
-export function nuevoUsuario(values){
+export function signUpUser(values){
   /**
    *  This function register an user on db
    */
-  return dispatch => database.ref('USERS/users/'+values.username).set(values);
+  let root = values.reviewer? "reviewers":"users";
+
+  return dispatch => database.ref('USERS/'+root+'/'+values.ID).set(values).then(()=>{
+    console.log("then");
+  });
 }
