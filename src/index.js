@@ -6,10 +6,11 @@ import reducers from './reducers/index';
 import {Provider} from 'react-redux';
 import './index.css';
 import App from './App';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)}>
+    <Provider store={createStoreWithMiddleware(reducers,composeWithDevTools())}>
         <App/>
     </Provider>, document.getElementById('root'));

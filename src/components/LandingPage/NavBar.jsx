@@ -1,24 +1,42 @@
 import React, { Component, PropTypes } from 'react';
-import {Menu, Dropdown, Button} from 'semantic-ui-react';
+import {Menu, Dropdown, Button, Image} from 'semantic-ui-react';
+import {connect} from 'react-redux';
+import {getUser} from '../../actions/UsersActions';
 
-class NavBar extends React.Component {
+const options = [
+  { key: 'user', text: 'Account', icon: 'user' },
+  { key: 'settings', text: 'Settings', icon: 'settings' },
+  { key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
+]
+class Nav extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      activeItem: 'heatScore',
+      user:null,
+    };
   }
-  state = { activeItem: 'home' }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  render() {
-    const { activeItem } = this.state
+  trigger(){
+    return(
+      <span>
+        <Image avatar src="https://image.flaticon.com/icons/svg/149/149072.svg" /> Guest
+      </span>
+    )
+  }
 
-    return (
-      <div>
-        <Menu size='small'>
-        <Menu.Item name='heatScore' active={activeItem === 'heatScore'} onClick={this.handleItemClick} />
-        <Menu.Item name='for Users' active={activeItem === 'for Users'} onClick={this.handleItemClick} />
-        <Menu.Item name='for Companies' active={activeItem === 'for Companies'} onClick={this.handleItemClick} />
-
-        <Menu.Menu position='right'>
+  LogSign(){
+    if(this.state.user){
+      return(
+        <div>
+          <Dropdown trigger={this.trigger()} options={options} pointing='top left' icon={null} />
+        </div>
+      )
+    }
+    else{
+      return(
+        <div>
           <Menu.Item>
             <Button.Group>
               <Button positive>Log In</Button>
@@ -26,11 +44,35 @@ class NavBar extends React.Component {
               <Button primary>Sign Up</Button>
             </Button.Group>
           </Menu.Item>
+        </div>
+      )
+    }
+  }
+
+
+  render() {
+    const { activeItem } = this.state
+
+    return (
+      <div>
+        <Menu size='small'>
+        <Menu.Item>
+          <img src="https://goo.gl/z5vYiX"/>
+        </Menu.Item>
+        <Menu.Item name='for Users' active={activeItem === 'for Users'} onClick={this.handleItemClick} />
+        <Menu.Item name='for Companies' active={activeItem === 'for Companies'} onClick={this.handleItemClick} />
+
+        <Menu.Menu position='right'>
+          {this.LogSign()}
         </Menu.Menu>
       </Menu>
       </div>
     );
   }
 }
+let NavBar = (Nav);
+NavBar = connect(state=>({
+	users: state.users
+}),{getUser})(NavBar);
 
 export default NavBar;
