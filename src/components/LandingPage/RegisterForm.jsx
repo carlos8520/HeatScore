@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import React, { Component, PropTypes } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Segment } from 'semantic-ui-react'
 import {signUpUser} from '../../actions/UsersActions';
 
 class RForm extends React.Component {
@@ -20,8 +20,6 @@ class RForm extends React.Component {
     this.handleRegister = this.handleRegister.bind(this);
     this.handleReviewer = this.handleReviewer.bind(this);
   }
-
-
   handleFullName(e){
     let userMod = this.state.newUser;
     userMod.fullName = e.target.value;
@@ -51,29 +49,56 @@ class RForm extends React.Component {
     this.props.signUpUser(user);
   }
 
+  beautyForm(){
+    let txtBt = this.props.notHeader? "Sign-Up":"Log-In"
+    return(
+    <Form size='large'>
+      <Segment stacked>
+        <Form.Input
+          fluid
+          icon='user outline'
+          iconPosition='left'
+          placeholder='Full Name'
+          onChange={this.handleFullName}
+        />
+        <Form.Input
+          fluid
+          icon='user'
+          iconPosition='left'
+          placeholder='E-mail address'
+          onChange={this.handleMail}
+        />
+        <Form.Input
+          fluid
+          icon='lock'
+          iconPosition='left'
+          placeholder='Password'
+          type='password'
+          onChange={this.handlePassword}
+        />
+        <Form.Field>
+          <Checkbox label='I want to be a reviewer' onChange={this.handleReviewer}/>
+        </Form.Field>
+
+      <Button color='orange' fluid size='large' onClick={this.handleRegister} >{txtBt}</Button>
+      </Segment>
+    </Form>
+  )
+}
+
   render() {
-    return (
-      <div>
-        <Form>
-          <Form.Field>
-            <label>Full Name</label>
-            <input id = "form_lading_fullName"placeholder='Full Name' onChange={this.handleFullName}/>
-          </Form.Field>
-          <Form.Field>
-            <label>e-Mail</label>
-            <input id = "form_lading_email" placeholder='e-Mail' type="email" onChange={this.handleMail}/>
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input id = "form_lading_password"  placeholder='Password' type="password" onChange={this.handlePassword}/>
-          </Form.Field>
-          <Form.Field>
-            <Checkbox label='I want to be a reviewer' onChange={this.handleReviewer}/>
-          </Form.Field>
-          <Button type='submit' onClick={this.handleRegister}>Submit</Button>
-        </Form>
-      </div>
-    );
+    if(this.props.notHeader)
+      return(
+          this.beautyForm()
+      );
+    else
+      return (
+        <div>
+          <h1>Promote Your Projects, Finantiation, Show who you are!</h1>
+          <h2>Hundreds of companies Hiring Projects!</h2>
+          {this.beautyForm()}
+        </div>
+      );
   }
 }
 
