@@ -1,16 +1,10 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment, Checkbox } from 'semantic-ui-react'
 import RegisterForm from './RegisterForm';
-
-export const center = {
-	verticalAlign: 'middle',
-	justifyContent: 'center',
-	alignItems: 'center',
-	marginTop: '15%'
-};
+import {center} from '../../css/main.js';
 
 const LoginForm = () => (
-  <div className='login-form' style={center}>
+  <div className='login-form' style={center}> <br/><br/>
     <Grid
       textAlign='center'
       style={{ height: '100%' }}

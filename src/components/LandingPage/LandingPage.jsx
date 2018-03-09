@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {getUsers,signUpUser, getUser} from '../../actions/UsersActions';
 import RegisterForm from './RegisterForm';
 import NavBar from './NavBar';
-import SignUp from './SignUp';
+import LogIn from './LogIn';
 
 class LPage extends React.Component{
   constructor(props) {
@@ -18,7 +18,7 @@ class LPage extends React.Component{
     return (
       <div>
       <center>
-        <SignUp/>
+        <LogIn/>
       </center>
       </div>
     );
