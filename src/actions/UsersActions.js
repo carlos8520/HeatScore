@@ -38,6 +38,10 @@ export function login(values){
   /**
    *  This funcion will return an user from db
    */
+   if(!values){
+     goToPage(types.SIGN_OUT);
+     return;
+   }
    return dispatch =>{
     database.ref('USERS/users/'+values.userName).once('value').then((snapshot)=>{
       if(snapshot.val() != null){

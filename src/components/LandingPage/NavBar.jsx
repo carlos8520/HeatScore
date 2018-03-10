@@ -22,9 +22,10 @@ class Nav extends React.Component {
 
   trigger(){
     let userName = this.props.users.userLogged.fullName;
+    let photo = this.props.users.userLogged.photo;
     return(
       <span>
-        <Image avatar src="https://image.flaticon.com/icons/svg/149/149072.svg" /> {userName}
+        <Image avatar src={photo} /> {userName}
       </span>
     )
   }

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getUsers,signUpUser} from '../actions/UsersActions';
+import {getUsers,login} from '../actions/UsersActions';
 import * as pages from '../actions/constants';
 import RegisterForm from './LandingPage/RegisterForm';
 import NavBar from './LandingPage/NavBar';
 import LogIn from './LandingPage/LogIn';
 import SignUp from './LandingPage/SignUp';
 import UserProfile from './User/Profile';
-
 
 class HPage extends React.Component{
   constructor(props) {
@@ -16,6 +15,7 @@ class HPage extends React.Component{
 
   componentDidMount() {
     this.props.getUsers();
+    this.props.login(this.props.users.userLogged||{});
   }
 
 
@@ -31,7 +31,7 @@ class HPage extends React.Component{
     else if(pageLoaded == pages.SIGN_UP_FORM)
       return <SignUp/>
     else if(pageLoaded == pages.USER_PROFILE)
-      return <UserProfile/>
+      return <UserProfile user={this.props.users.userLogged}/>
   }
 
   render() {
@@ -51,6 +51,6 @@ class HPage extends React.Component{
 let HomePage = (HPage);
 HomePage = connect(state=>({
 	users: state.users
-}),{getUsers,signUpUser})(HomePage);
+}),{getUsers,login})(HomePage);
 
 export default HomePage;

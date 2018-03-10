@@ -64,7 +64,7 @@ class Login extends Component{
               <Button color='orange' fluid size='large' onClick={this.handleLogIn}>Login</Button>
               </Segment>
             </Form>
-            <Message>
+            <Message color='yellow'>
               New to us? Sign Up
             </Message>
           </Grid.Column>

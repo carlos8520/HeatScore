@@ -8,11 +8,13 @@ export default function(state={},action){
       });
     case types.LOG_IN_USER:
       return Object.assign({}, state, {
-          userLogged: action.payload
+          userLogged: action.payload,
+          pageLoaded: types.USER_PROFILE,
       });
     case types.SIGN_OUT:
       return Object.assign({},state,{
-        userLogged:null
+        userLogged: null,
+        pageLoaded: null
       })
     case types.GO_TO_PAGE:
       return Object.assign({},state,{

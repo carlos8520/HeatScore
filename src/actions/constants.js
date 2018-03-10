@@ -12,3 +12,4 @@ export const LOG_IN_FORM = "LOG_IN_FORM";
 export const SIGN_UP_FORM = "SIGN_UP_FORM";
 export const USER_PROFILE = "USER_PROFILE";
 export const USER_SETTINGS = "USER_SETTINGS";
+export const USER_DASHBOARD = "USER_DASHBOARD";
