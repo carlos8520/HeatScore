@@ -16,11 +16,21 @@ export function getUsers(){
 }
 
 export function goToPage(page){
-  return dispatch=>{
-    dispatch({
-      type: types.GO_TO_PAGE,
-      payload: page
-    })
+  if(page == types.SIGN_OUT){
+    return dispatch=>{
+      dispatch({
+        type:types.SIGN_OUT,
+        payload: null
+      })
+    }
+  }
+  else{
+    return dispatch=>{
+      dispatch({
+        type: types.GO_TO_PAGE,
+        payload: page
+      })
+    }
   }
 }
 

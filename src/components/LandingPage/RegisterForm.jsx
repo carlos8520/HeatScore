@@ -50,7 +50,6 @@ class RForm extends React.Component {
   }
 
   beautyForm(){
-    let txtBt = this.props.notHeader? "Sign-Up":"Log-In"
     return(
     <Form size='large'>
       <Segment stacked>
@@ -80,7 +79,7 @@ class RForm extends React.Component {
           <Checkbox label='I want to be a reviewer' onChange={this.handleReviewer}/>
         </Form.Field>
 
-      <Button color='orange' fluid size='large' onClick={this.handleRegister} >{txtBt}</Button>
+      <Button color='orange' fluid size='large' onClick={this.handleRegister} >Sign-Up</Button>
       </Segment>
     </Form>
   )

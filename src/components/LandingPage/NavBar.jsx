@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import {Menu, Dropdown, Button, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {login,goToPage} from '../../actions/UsersActions';
-import {LOG_IN_FORM, SIGN_UP_FORM} from '../../actions/constants';
+import {LOG_IN_FORM, SIGN_UP_FORM, USER_PROFILE, USER_SETTINGS, SIGN_OUT} from '../../actions/constants';
 
 const options = [
-  { key: 'user', text: 'Account', icon: 'user' },
-  { key: 'settings', text: 'Settings', icon: 'settings' },
-  { key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
+  { key: 'profile', text: 'Account', icon: 'user' , value:USER_PROFILE},
+  { key: 'settings', text: 'Settings', icon: 'settings', value:USER_SETTINGS },
+  { key: 'sign-out', text: 'Sign Out', icon: 'sign out', value:SIGN_OUT },
 ]
 class Nav extends React.Component {
   constructor(props) {
@@ -18,20 +18,29 @@ class Nav extends React.Component {
     };
   }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleGoToPage = (e, {value}) => this.props.goToPage(value)
 
   trigger(){
+    let userName = this.props.users.userLogged.fullName;
     return(
       <span>
-        <Image avatar src="https://image.flaticon.com/icons/svg/149/149072.svg" /> Guest
+        <Image avatar src="https://image.flaticon.com/icons/svg/149/149072.svg" /> {userName}
       </span>
     )
   }
 
   LogSign(){
-    if(this.state.user){
+    let usuario = this.props.users.userLogged;
+    if(usuario){
       return(
-        <div>
-          <Dropdown trigger={this.trigger()} options={options} pointing='top left' icon={null} />
+        <div >
+          <Menu.Item>
+            <Dropdown
+              onChange={this.handleGoToPage}
+              trigger={this.trigger()}
+              options={options}
+              pointing='top left' />
+          </Menu.Item>
         </div>
       )
     }

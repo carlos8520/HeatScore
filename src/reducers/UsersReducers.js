@@ -10,6 +10,10 @@ export default function(state={},action){
       return Object.assign({}, state, {
           userLogged: action.payload
       });
+    case types.SIGN_OUT:
+      return Object.assign({},state,{
+        userLogged:null
+      })
     case types.GO_TO_PAGE:
       return Object.assign({},state,{
         pageLoaded:action.payload

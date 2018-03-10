@@ -3,7 +3,7 @@ import { Button, Form, Grid, Header, Image, Message, Segment, Checkbox } from 's
 import RegisterForm from './RegisterForm';
 import {center} from '../../css/main.js';
 
-const LoginForm = () => (
+const SignUpForm = () => (
   <div className='login-form' style={center}> <br/><br/>
     <Grid
       textAlign='center'
@@ -24,4 +24,4 @@ const LoginForm = () => (
   </div>
 )
 
-export default LoginForm
+export default SignUpForm
