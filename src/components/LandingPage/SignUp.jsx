@@ -13,7 +13,7 @@ const LoginForm = () => (
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' color='orange' textAlign='center'>
           <Image src='https://goo.gl/z5vYiX' />
-          {' '}Sign-Up With Us
+          {' '}Sign-Up and Join us!
         </Header>
         <RegisterForm notHeader={true}/>
         <Message>

@@ -15,6 +15,15 @@ export function getUsers(){
   }
 }
 
+export function goToPage(page){
+  return dispatch=>{
+    dispatch({
+      type: types.GO_TO_PAGE,
+      payload: page
+    })
+  }
+}
+
 export function login(values){
   /**
    *  This funcion will return an user from db

@@ -21,7 +21,7 @@ class Login extends Component{
   handlePassword = (e) => this.setState({password:e.target.value});
 
   handleLogIn(){
-    
+
     let user = {
       userName : this.state.user,
       password: this.state.password
@@ -29,6 +29,7 @@ class Login extends Component{
 
     this.props.login(user);
   }
+
   render(){
     return(
       <div className='login-form' style={center}> <br/><br/>

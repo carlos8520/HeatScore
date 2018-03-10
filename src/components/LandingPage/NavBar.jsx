@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import {Menu, Dropdown, Button, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {login} from '../../actions/UsersActions';
+import {login,goToPage} from '../../actions/UsersActions';
+import {LOG_IN_FORM, SIGN_UP_FORM} from '../../actions/constants';
 
 const options = [
   { key: 'user', text: 'Account', icon: 'user' },
@@ -39,9 +40,9 @@ class Nav extends React.Component {
         <div>
           <Menu.Item>
             <Button.Group>
-              <Button positive>Log In</Button>
+              <Button positive onClick={()=>{this.props.goToPage(LOG_IN_FORM)}}>Log In</Button>
               <Button.Or />
-              <Button primary>Sign Up</Button>
+              <Button primary onClick={()=>{this.props.goToPage(SIGN_UP_FORM)}}>Sign Up</Button>
             </Button.Group>
           </Menu.Item>
         </div>
@@ -73,6 +74,6 @@ class Nav extends React.Component {
 let NavBar = (Nav);
 NavBar = connect(state=>({
 	users: state.users
-}),{login})(NavBar);
+}),{login,goToPage})(NavBar);
 
 export default NavBar;
