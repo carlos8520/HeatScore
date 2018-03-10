@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {Menu, Dropdown, Button, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {getUser} from '../../actions/UsersActions';
+import {login} from '../../actions/UsersActions';
 
 const options = [
   { key: 'user', text: 'Account', icon: 'user' },
@@ -73,6 +73,6 @@ class Nav extends React.Component {
 let NavBar = (Nav);
 NavBar = connect(state=>({
 	users: state.users
-}),{getUser})(NavBar);
+}),{login})(NavBar);
 
 export default NavBar;

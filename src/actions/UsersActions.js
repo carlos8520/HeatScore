@@ -1,7 +1,5 @@
 import { database } from '../firebase';
-export const FETCH_USER = "FETCH_USER";
-export const FETCH_USERS = "FETCH_USERS";
-export const LOG_IN_USER = "LOG_IN_USER";
+import * as types from './constants';
 
 export function getUsers(){
   /**
@@ -10,20 +8,38 @@ export function getUsers(){
   return dispatch=>{
     database.ref('USERS/users').on('value', data=>{
       dispatch({
-        type: FETCH_USERS,
+        type: types.FETCH_USERS,
         payload: data.val()
       })
     })
   }
 }
 
-export function getUser(values){
+export function login(values){
   /**
    *  This funcion will return an user from db
    */
-  database.ref('USERS/users/'+values.userName).then((snapshot)=>{
-    return snapshot.val()
-  });
+   return dispatch =>{
+    database.ref('USERS/users/'+values.userName).once('value').then((snapshot)=>{
+      if(snapshot.val() != null){
+        if(snapshot.val().password == values.password){
+          console.log("found");
+          dispatch({
+            type: types.LOG_IN_USER,
+            payload: snapshot.val()
+          });
+        }
+        else {
+          console.log("Password Incorrect");
+          return false;
+        }
+      }
+      else{
+        console.log("User Not Found");
+        return false;
+      }
+    });
+  }
 }
 
 export function signUpUser(values){
@@ -35,7 +51,7 @@ export function signUpUser(values){
   return dispatch => database.ref('USERS/'+root+'/'+values.ID).set(values).then(()=>{
     database.ref('USERS/'+root+'/'+values.ID).once('value').then((snapshot)=>{
       dispatch({
-        type: LOG_IN_USER,
+        type: types.LOG_IN_USER,
         payload: snapshot.val()
       })
     })

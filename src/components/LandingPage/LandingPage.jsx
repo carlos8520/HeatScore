@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {getUsers,signUpUser, getUser} from '../../actions/UsersActions';
+import {getUsers,signUpUser} from '../../actions/UsersActions';
 import RegisterForm from './RegisterForm';
 import NavBar from './NavBar';
 import LogIn from './LogIn';
@@ -18,7 +18,7 @@ class LPage extends React.Component{
     return (
       <div>
       <center>
-        <LogIn/>
+        
       </center>
       </div>
     );
@@ -28,6 +28,6 @@ class LPage extends React.Component{
 let LandingPage = (LPage);
 LandingPage = connect(state=>({
 	users: state.users
-}),{getUsers,signUpUser,getUser})(LandingPage);
+}),{getUsers,signUpUser})(LandingPage);
 
 export default LandingPage;
