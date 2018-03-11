@@ -11,6 +11,10 @@ export default function(state={},action){
           userLogged: action.payload,
           pageLoaded: types.USER_PROFILE,
       });
+    case types.USER_PROJECTS:
+      return Object.assign({},state,{
+        userLoggedProjects:action.payload
+      })
     case types.SIGN_OUT:
       return Object.assign({},state,{
         userLogged: null,

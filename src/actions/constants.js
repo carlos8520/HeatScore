@@ -3,6 +3,7 @@ export const FETCH_USER = "FETCH_USER";
 export const FETCH_USERS = "FETCH_USERS";
 export const LOG_IN_USER = "LOG_IN_USER";
 export const SIGN_OUT = "SIGN_OUT";
+export const USER_PROJECTS = "USER_PROJECTS";
 
 
 // Page to load

@@ -65,6 +65,16 @@ export function login(values){
   }
 }
 
+export function getProjects(user){
+  return dispatch=>database.ref('PROJECTS/').orderByChild("autor").equalTo(user).on('value',
+          (snapshot)=>{
+            dispatch({
+              type:types.USER_PROJECTS,
+              payload:snapshot.val()
+            })
+          })
+}
+
 export function signUpUser(values){
   /**
    *  This function register an user on db

@@ -1,13 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import {Card, Icon, Image, Grid} from 'semantic-ui-react';
-import {goToPage} from '../../actions/UsersActions';
+import {Card, Icon, Image, Grid, Rating} from 'semantic-ui-react';
+import {goToPage, getProjects} from '../../actions/UsersActions';
 import {connect } from 'react-redux';
+import _ from 'lodash';
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = { };
   }
+
+  componentWillMount() {
+    this.props.getProjects(this.props.users.userLogged.ID);
+  }
+
   userCard(){
     return(
         <div>
@@ -25,20 +31,35 @@ class Profile extends React.Component {
              <Card.Description>
                Bio: {this.props.user.bio}
              </Card.Description>
-             <Card.Description>
-               email: {this.props.user.email}
-             </Card.Description>
            </Card.Content>
            <Card.Content extra>
              <a>
-               <Icon name='user' />
-               22 Friends
+               <Icon name='mail' />
+               email: {this.props.user.email}
              </a>
            </Card.Content>
          </Card>
         </div>
     );
   }
+
+  renderProjects(){
+    return(
+      <div> <br/>
+        <h1>My Projects</h1>
+        <Card.Group>
+          {
+            _.map(this.props.users.userLoggedProjects,(p,i)=>{
+              return(
+                <ProjectCard project={p} key={i}/>
+              )
+            })
+          }
+        </Card.Group>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div>
@@ -47,7 +68,7 @@ class Profile extends React.Component {
             {this.userCard()}
           </Grid.Column>
           <Grid.Column width={12}>
-            <Image src='/assets/images/wireframe/paragraph.png' />
+            {this.renderProjects()}
           </Grid.Column>
         </Grid>
       </div>
@@ -57,6 +78,33 @@ class Profile extends React.Component {
 let UserProfile = (Profile);
 UserProfile = connect(state=>({
 	users: state.users
-}),{goToPage})(UserProfile);
+}),{goToPage,getProjects})(UserProfile);
 
 export default UserProfile;
+
+class ProjectCard extends Component{
+  render(){
+    let grade = 5*(this.props.project.points/this.props.project.nPoints)/10;
+    return(
+      <Card>
+        <Image src={this.props.project.photo} />
+        <Card.Content>
+          <Card.Header>
+            {this.props.project.name}
+          </Card.Header>
+          <Card.Meta>
+           <span className='date'>
+             {this.props.project.contest}
+           </span>
+         </Card.Meta>
+          <Card.Description>
+            {this.props.project.shortDescription}
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+            <Rating icon='star' defaultRating={grade} maxRating={5} disabled/>
+        </Card.Content>
+      </Card>
+    )
+  }
+}
