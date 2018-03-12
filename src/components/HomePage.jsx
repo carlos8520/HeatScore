@@ -7,6 +7,7 @@ import NavBar from './LandingPage/NavBar';
 import LogIn from './LandingPage/LogIn';
 import SignUp from './LandingPage/SignUp';
 import UserProfile from './User/Profile';
+import UserSettings from './User/Settings';
 
 class HPage extends React.Component{
   constructor(props) {
@@ -32,6 +33,8 @@ class HPage extends React.Component{
       return <SignUp/>
     else if(pageLoaded == pages.USER_PROFILE)
       return <UserProfile user={this.props.users.userLogged}/>
+    else if(pageLoaded == pages.USER_SETTINGS)
+      return <UserSettings />
   }
 
   render() {

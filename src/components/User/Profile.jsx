@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {Card, Icon, Image, Grid, Rating} from 'semantic-ui-react';
-import {goToPage, getProjects} from '../../actions/UsersActions';
+import {goToPage, getProjects,login} from '../../actions/UsersActions';
 import {connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -11,6 +11,7 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
+    this.props.login(this.props.users.userLogged);
     this.props.getProjects(this.props.users.userLogged.ID);
   }
 
@@ -65,7 +66,9 @@ class Profile extends React.Component {
       <div>
         <Grid>
           <Grid.Column width={4}>
-            {this.userCard()}
+            <center>
+              {this.userCard()}
+            </center>
           </Grid.Column>
           <Grid.Column width={12}>
             {this.renderProjects()}
@@ -78,7 +81,7 @@ class Profile extends React.Component {
 let UserProfile = (Profile);
 UserProfile = connect(state=>({
 	users: state.users
-}),{goToPage,getProjects})(UserProfile);
+}),{goToPage,getProjects, login})(UserProfile);
 
 export default UserProfile;
 

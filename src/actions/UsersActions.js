@@ -35,6 +35,8 @@ export function goToPage(page){
 }
 
 export function login(values){
+  let userNameValues = values.ID? (values.ID):(values.userName);
+
   /**
    *  This funcion will return an user from db
    */
@@ -43,7 +45,8 @@ export function login(values){
      return;
    }
    return dispatch =>{
-    database.ref('USERS/users/'+values.userName).once('value').then((snapshot)=>{
+    database.ref('USERS/users/'+userNameValues).once('value').then(
+     (snapshot)=>{
       if(snapshot.val() != null){
         if(snapshot.val().password == values.password){
           console.log("found");
