@@ -16,7 +16,7 @@ class HPage extends React.Component{
 
   componentDidMount() {
     this.props.getUsers();
-    this.props.login(this.props.users.userLogged||{});
+    this.props.login(this.props.users.userLogged||{userName:"gamezcua1",password:"gerald123"});
   }
 
 
@@ -40,12 +40,10 @@ class HPage extends React.Component{
   render() {
     return (
       <div>
-      <center>
         <NavBar/>
         {
           this.renderPage()
         }
-      </center>
       </div>
     );
   }

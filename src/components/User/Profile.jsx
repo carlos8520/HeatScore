@@ -46,7 +46,7 @@ class Profile extends React.Component {
 
   renderProjects(){
     return(
-      <div> <br/>
+      <div> 
         <h1>My Projects</h1>
         <Card.Group>
           {
@@ -63,7 +63,7 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{margin:"1.5%"}}>
         <Grid>
           <Grid.Column width={4}>
             <center>

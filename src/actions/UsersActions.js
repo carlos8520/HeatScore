@@ -93,3 +93,15 @@ export function signUpUser(values){
     })
   });
 }
+
+export function updateUser(values){
+  /**
+   * This function will update a user's information
+   */
+   var updates={};
+   updates['/USERS/users/'+values.ID] = values;
+
+   return dispatch => database.ref().update(updates).then((snapshot)=>{
+     login(values)
+   });
+}

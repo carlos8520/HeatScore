@@ -45,6 +45,7 @@ class RForm extends React.Component {
     * This funcion will sign up a new user into our database
     */
     let user = this.state.newUser;
+    user.photo = "https://goo.gl/g2SH1b";
     user.ID = user.email.split('@')[0]; //Will take just the username from email
     this.props.signUpUser(user);
   }
