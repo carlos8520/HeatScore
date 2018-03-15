@@ -16,7 +16,7 @@ class HPage extends React.Component{
 
   componentDidMount() {
     this.props.getUsers();
-    this.props.login(this.props.users.userLogged||{userName:"gamezcua1",password:"gerald123"});
+    this.props.login(this.props.users.userLogged);
   }
 
 

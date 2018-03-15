@@ -68,7 +68,7 @@ class Nav extends React.Component {
       <div>
         <Menu size='small'>
         <Menu.Item>
-          <img src="https://goo.gl/z5vYiX"/>
+          <img src="https://goo.gl/z5vYiX"/> {' '}HeatScore
         </Menu.Item>
         <Menu.Item name='for Users' active={activeItem === 'for Users'} onClick={this.handleItemClick} />
         <Menu.Item name='for Companies' active={activeItem === 'for Companies'} onClick={this.handleItemClick} />
