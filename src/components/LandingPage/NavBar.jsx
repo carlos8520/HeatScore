@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {Menu, Dropdown, Button, Image} from 'semantic-ui-react';
+import {Menu, Header, Dropdown, Button, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {login,goToPage} from '../../actions/UsersActions';
 import {LOG_IN_FORM, SIGN_UP_FORM, USER_PROFILE, USER_SETTINGS, SIGN_OUT} from '../../actions/constants';
@@ -68,7 +68,10 @@ class Nav extends React.Component {
       <div>
         <Menu size='small'>
         <Menu.Item>
-          <img src="https://goo.gl/z5vYiX"/> {' '}HeatScore
+          <Header as='h4' color ="orange">
+            <Image src="https://goo.gl/z5vYiX" />
+            {' '}HeatScore
+          </Header>
         </Menu.Item>
         <Menu.Item name='for Users' active={activeItem === 'for Users'} onClick={this.handleItemClick} />
         <Menu.Item name='for Companies' active={activeItem === 'for Companies'} onClick={this.handleItemClick} />

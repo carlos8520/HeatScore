@@ -1,6 +1,11 @@
 import { database } from '../firebase';
 import * as types from './constants';
 
+export function goToAPI(){
+  
+}
+
+
 export function getUsers(){
   /**
    * This funcion will get all the users from db

@@ -16,7 +16,11 @@ class HPage extends React.Component{
 
   componentDidMount() {
     this.props.getUsers();
-    this.props.login(this.props.users.userLogged);
+    this.props.login(this.props.users.userLogged||{userName:"gamezcua1", password:"geral123"});
+    fetch('http://localhost:8000/sumar')
+      .then(data => data.json())
+      .then((data) => { console.log(data) });
+
   }
 
 

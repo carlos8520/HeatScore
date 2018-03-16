@@ -46,7 +46,7 @@ class Profile extends React.Component {
 
   renderProjects(){
     return(
-      <div> 
+      <div>
         <h1>My Projects</h1>
         <Card.Group>
           {
