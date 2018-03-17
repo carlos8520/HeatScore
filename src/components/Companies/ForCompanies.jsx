@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {goToPage} from '../../actions/UsersActions'
+import {CO_SIGN_UP} from '../../actions/constants'
+import {connect} from 'react-redux'
 import {Statistic, Icon, Image, Header, Divider, Button} from 'semantic-ui-react'
 
 const TOP = () => (
@@ -54,7 +57,6 @@ class Companies extends React.Component {
     }
   }
 
-
   render () {
     return(
       <div style={{margin:"5%"}}>
@@ -64,10 +66,14 @@ class Companies extends React.Component {
         <Statistics/>
         <br/>
         <br/>
-        <Button fluid positive>Contact us!</Button>
+        <Button fluid positive onClick={()=>{this.props.goToPage(CO_SIGN_UP)}}>Start publishing contests!</Button>
       </div>
     )
   }
 }
 
-export default Companies;
+let ForCompanies = (Companies);
+ForCompanies = connect(state=>({
+	users: state.users
+}),{goToPage})(ForCompanies);
+export default ForCompanies;

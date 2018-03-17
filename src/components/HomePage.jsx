@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {getUsers,login} from '../actions/UsersActions';
 import * as pages from '../actions/constants';
@@ -10,11 +10,9 @@ import UserProfile from './User/Profile';
 import UserSettings from './User/Settings';
 import ProjectDescription from './Projects/ProjectDescription';
 import ForCompanies from './Companies/ForCompanies';
+import CoSignUp from './Companies/CompaniesSignUp';
 
 class HPage extends React.Component{
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.getUsers();
@@ -41,6 +39,8 @@ class HPage extends React.Component{
       return <ProjectDescription/>
     else if(pageLoaded == pages.FOR_COMPANIES)
       return <ForCompanies/>
+    else if(pageLoaded == pages.CO_SIGN_UP)
+    return <CoSignUp/>
   }
 
   render() {

@@ -95,7 +95,8 @@ class RForm extends React.Component {
       );
     else
       return (
-        <div style={{margin:"2%"}}>
+        <div style={{margin:"2%"}} style={{textAlign:'center'}}>
+          <br/>
           <h1>Promote Your Projects, Finantiation, Show who you are!</h1>
           <h2>Hundreds of companies Hiring Projects!</h2>
           {this.beautyForm()}

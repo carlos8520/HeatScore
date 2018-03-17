@@ -17,3 +17,4 @@ export const USER_SETTINGS = "USER_SETTINGS";
 export const USER_DASHBOARD = "USER_DASHBOARD";
 export const RENDER_PROJ = "RENDER_PROJ";
 export const FOR_COMPANIES = "FOR_COMPANIES";
+export const CO_SIGN_UP = "CO_SIGN_UP";

@@ -7,9 +7,9 @@ export default function(state={},action){
           users: action.payload
       });
     case types.LOG_IN_USER:
-      return Object.assign({}, state, {
-          userLogged: action.payload,
-          pageLoaded: types.USER_PROFILE,
+      return Object.assign({}, state, {     //no estoy cambiando el state si no que solo estoy
+          userLogged: action.payload,     // asignando lo que necesito, y con el Object.Assign
+          pageLoaded: types.USER_PROFILE, // Creo un objeto del estado y las nuevas propiedades
       });
     case types.USER_PROJECTS:
       return Object.assign({},state,{
