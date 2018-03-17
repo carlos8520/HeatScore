@@ -1,10 +1,6 @@
 import { database } from '../firebase';
 import * as types from './constants';
 
-export function goToAPI(){
-  
-}
-
 
 export function getUsers(){
   /**
@@ -20,7 +16,19 @@ export function getUsers(){
   }
 }
 
+export function renderProject(values){
+  return dispatch=>{
+    dispatch({
+      type:types.DEF_PROJ_SEEN,
+      payload: values
+    })
+  }
+}
+
 export function goToPage(page){
+  /*
+   * This function will render a page
+   */
   if(page == types.SIGN_OUT){
     return dispatch=>{
       dispatch({

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import {Menu, Header, Dropdown, Button, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {login,goToPage} from '../../actions/UsersActions';
-import {LOG_IN_FORM, SIGN_UP_FORM, USER_PROFILE, USER_SETTINGS, SIGN_OUT} from '../../actions/constants';
+import {LOG_IN_FORM, SIGN_UP_FORM, USER_PROFILE, USER_SETTINGS, SIGN_OUT, FOR_COMPANIES} from '../../actions/constants';
 
 const options = [
   { key: 'profile', text: 'Account', icon: 'user' , value:USER_PROFILE},
@@ -16,6 +16,7 @@ class Nav extends React.Component {
       activeItem: 'heatScore',
       user:null,
     };
+
   }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   handleGoToPage = (e, {value}) => this.props.goToPage(value)
@@ -60,9 +61,31 @@ class Nav extends React.Component {
     }
   }
 
+  secondOptions(){
+    const { activeItem } = this.state;
+
+    if(this.props.users.userLogged)
+      return(
+        <Menu.Item
+          name='current Contests'
+          active={activeItem === 'for Users'}/>
+      )
+    else{
+      return(
+        <Menu.Menu>
+          <Menu.Item
+            name='for Users'
+            active={activeItem === 'for Users'}/>
+          <Menu.Item
+            name='for Companies'
+            active={activeItem === 'for Companies'}
+            onClick={()=>{this.props.goToPage(FOR_COMPANIES)}} />
+        </Menu.Menu>
+      );
+    }
+  }
 
   render() {
-    const { activeItem } = this.state
 
     return (
       <div>
@@ -73,8 +96,7 @@ class Nav extends React.Component {
             {' '}HeatScore
           </Header>
         </Menu.Item>
-        <Menu.Item name='for Users' active={activeItem === 'for Users'} onClick={this.handleItemClick} />
-        <Menu.Item name='for Companies' active={activeItem === 'for Companies'} onClick={this.handleItemClick} />
+        {this.secondOptions()}
 
         <Menu.Menu position='right'>
           {this.LogSign()}

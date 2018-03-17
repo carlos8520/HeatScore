@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import {Card, Icon, Image, Grid, Rating} from 'semantic-ui-react';
-import {goToPage, getProjects,login} from '../../actions/UsersActions';
+import {Card, Icon, Image, Grid, Rating, Transition} from 'semantic-ui-react';
+import ProjectCard from '../Projects/ProjectCard';
+import {goToPage, getProjects,login,renderProject} from '../../actions/UsersActions';
+import {RENDER_PROJ} from '../../actions/constants';
 import {connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -52,7 +54,9 @@ class Profile extends React.Component {
           {
             _.map(this.props.users.userLoggedProjects,(p,i)=>{
               return(
-                <ProjectCard project={p} key={i}/>
+                <Transition key={i} visible='show' animation='scale' duration={1000}>
+                  <ProjectCard project={p} key={i}/>
+                </Transition>
               )
             })
           }
@@ -84,30 +88,3 @@ UserProfile = connect(state=>({
 }),{goToPage,getProjects, login})(UserProfile);
 
 export default UserProfile;
-
-class ProjectCard extends Component{
-  render(){
-    let grade = 5*(this.props.project.points/this.props.project.nPoints)/10;
-    return(
-      <Card>
-        <Image src={this.props.project.photo} />
-        <Card.Content>
-          <Card.Header>
-            {this.props.project.name}
-          </Card.Header>
-          <Card.Meta>
-           <span className='date'>
-             {this.props.project.contest}
-           </span>
-         </Card.Meta>
-          <Card.Description>
-            {this.props.project.shortDescription}
-          </Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-            <Rating icon='star' defaultRating={grade} maxRating={5} disabled/>
-        </Card.Content>
-      </Card>
-    )
-  }
-}

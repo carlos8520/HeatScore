@@ -52,6 +52,7 @@ class RForm extends React.Component {
 
   beautyForm(){
     return(
+      <div style={{margin:"2%"}}>
     <Form size='large'>
       <Segment stacked>
         <Form.Input
@@ -83,6 +84,7 @@ class RForm extends React.Component {
       <Button color='orange' fluid size='large' onClick={this.handleRegister} >Sign-Up</Button>
       </Segment>
     </Form>
+  </div>
   )
 }
 
@@ -93,7 +95,7 @@ class RForm extends React.Component {
       );
     else
       return (
-        <div>
+        <div style={{margin:"2%"}}>
           <h1>Promote Your Projects, Finantiation, Show who you are!</h1>
           <h2>Hundreds of companies Hiring Projects!</h2>
           {this.beautyForm()}

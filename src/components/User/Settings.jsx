@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {storeDB} from '../../firebase';
 import React, { Component, PropTypes } from 'react';
-import {updateUser,login} from '../../actions/UsersActions';
+import {updateUser,login,goToPage} from '../../actions/UsersActions';
 import {Grid, Divider, Form, Input, TextArea, Button, Image,Loader, Segment} from 'semantic-ui-react';
 
 let IMAGE = null;
@@ -55,6 +55,7 @@ class Settings extends React.Component {
     if(IMAGE != null) userUpdated.photo = IMAGE;
     console.log(userUpdated);
     this.props.updateUser(userUpdated);
+    this.props.goToPage("USER_PROFILE");
   }
 
   renderForm(){
@@ -107,6 +108,7 @@ class Settings extends React.Component {
         <Form.Field
           onChange={this.handlePhoto}
           control={Input}
+          fluid
           type="file"/>
         <Button fluid onClick={this.uploadPhoto}>Upload new image</Button>
       </Segment>
@@ -131,6 +133,7 @@ class Settings extends React.Component {
     }, () => {
       this.setState({completed : true});
       IMAGE= task.snapshot.downloadURL;
+      this.handleUpdate();
     });
   }
 
@@ -157,7 +160,7 @@ class Settings extends React.Component {
 let UserSettings = (Settings);
 UserSettings = connect(state=>({
 	users: state.users
-}),{updateUser,login})(UserSettings);
+}),{updateUser,login,goToPage})(UserSettings);
 
 
 export default UserSettings;

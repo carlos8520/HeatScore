@@ -8,6 +8,8 @@ import LogIn from './LandingPage/LogIn';
 import SignUp from './LandingPage/SignUp';
 import UserProfile from './User/Profile';
 import UserSettings from './User/Settings';
+import ProjectDescription from './Projects/ProjectDescription';
+import ForCompanies from './Companies/ForCompanies';
 
 class HPage extends React.Component{
   constructor(props) {
@@ -16,11 +18,7 @@ class HPage extends React.Component{
 
   componentDidMount() {
     this.props.getUsers();
-    this.props.login(this.props.users.userLogged||{userName:"gamezcua1", password:"geral123"});
-    fetch('http://localhost:8000/sumar')
-      .then(data => data.json())
-      .then((data) => { console.log(data) });
-
+    this.props.login(this.props.users.userLogged||{});
   }
 
 
@@ -39,6 +37,10 @@ class HPage extends React.Component{
       return <UserProfile user={this.props.users.userLogged}/>
     else if(pageLoaded == pages.USER_SETTINGS)
       return <UserSettings />
+    else if(pageLoaded == pages.RENDER_PROJ)
+      return <ProjectDescription/>
+    else if(pageLoaded == pages.FOR_COMPANIES)
+      return <ForCompanies/>
   }
 
   render() {
