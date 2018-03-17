@@ -5,6 +5,7 @@ import {goToPage, getProjects,login,renderProject} from '../../actions/UsersActi
 import {RENDER_PROJ} from '../../actions/constants';
 import {connect } from 'react-redux';
 import _ from 'lodash';
+import CoProfile from '../Companies/CoProfile';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -65,7 +66,7 @@ class Profile extends React.Component {
     )
   }
 
-  render() {
+  renderUser(){
     return (
       <div style={{margin:"1.5%"}}>
         <Grid>
@@ -80,6 +81,18 @@ class Profile extends React.Component {
         </Grid>
       </div>
     );
+  }
+  renderCompany(){
+    return(
+      <CoProfile user={this.props.users.userLogged}/> 
+    );
+  }
+  render() {
+    if(this.props.users.userLogged.type == "COMPANY"){
+      return this.renderCompany();
+    }else{
+      return this.renderUser();
+    }
   }
 }
 let UserProfile = (Profile);

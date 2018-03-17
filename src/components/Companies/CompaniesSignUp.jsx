@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {center} from '../../css/main.js';
 import {storeDB} from '../../firebase';
 import {registerCompany} from '../../actions/CompanyActions';
-import {Modal,Icon,Form, Segment, Button, Input, TextArea, Grid, Header, Image, Message} from 'semantic-ui-react';
+import {Modal,Icon,Form,Loader, Segment, Button, Input, TextArea, Grid, Header, Image, Message} from 'semantic-ui-react';
 
 let PDF = null;
 class CoSignUp extends React.Component {
@@ -60,6 +60,7 @@ class CoSignUp extends React.Component {
       email:this.state.email,
       ID:this.state.email.split('@')[0],
       password:this.state.password,
+      type:"COMPANY",
     };
 
     this.props.registerCompany(newUser);
@@ -109,6 +110,7 @@ class CoSignUp extends React.Component {
     return(
       <div style={{margin:"2%"}}>
         {this.modal()}
+        <Loader active={!this.state.completed}/>
         <Form size='large'>
           <Segment stacked>
             <Form.Input

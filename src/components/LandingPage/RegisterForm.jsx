@@ -47,6 +47,7 @@ class RForm extends React.Component {
     let user = this.state.newUser;
     user.photo = "https://goo.gl/g2SH1b";
     user.ID = user.email.split('@')[0]; //Will take just the username from email
+    user.type = user.reviewer? "REVIEWER":"USER"
     this.props.signUpUser(user);
   }
 
