@@ -16,9 +16,6 @@ const SignUpForm = () => (
           {' '}Sign-Up and Join us!
         </Header>
         <RegisterForm notHeader={true}/>
-        <Message>
-          Do you have an acount? Log-In!
-        </Message>
       </Grid.Column>
     </Grid>
   </div>

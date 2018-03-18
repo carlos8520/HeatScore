@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {center} from '../../css/main.js';
 import {storeDB} from '../../firebase';
-import {registerCompany} from '../../actions/CompanyActions';
+import {signUpUser} from '../../actions/UsersActions';
 import {Modal,Icon,Form,Loader, Segment, Button, Input, TextArea, Grid, Header, Image, Message} from 'semantic-ui-react';
 
 let PDF = null;
@@ -63,7 +63,7 @@ class CoSignUp extends React.Component {
       type:"COMPANY",
     };
 
-    this.props.registerCompany(newUser);
+    this.props.signUpUser(newUser);
   }
 
   handleUpload(){
@@ -192,5 +192,5 @@ class CoSignUp extends React.Component {
 let CompaniesSignUp = (CoSignUp);
 CompaniesSignUp = connect(state=>({
 	users: state.users
-}),{registerCompany})(CompaniesSignUp);
+}),{signUpUser})(CompaniesSignUp);
 export default CompaniesSignUp;

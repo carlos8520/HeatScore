@@ -2,8 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {Card, Image, Grid, Icon, } from 'semantic-ui-react';
+import {login} from '../../actions/UsersActions';
 
 class Profile extends React.Component {
+  componentWillMount() {
+  //  this.props.login(this.props.users.userLogged);
+  }
   userCard(){
     return(
         <div>
@@ -54,6 +58,6 @@ class Profile extends React.Component {
 let CoProfile = (Profile);
 CoProfile = connect(state=>({
 	users: state.users
-}),{})(CoProfile);
+}),{login})(CoProfile);
 
 export default CoProfile;
