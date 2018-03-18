@@ -16,7 +16,7 @@ class Profile extends React.Component {
 
   render() {
     if(this.props.users.userLogged.type == "COMPANY"){
-      <CoProfile user={this.props.users.userLogged}/>
+      return <CoProfile user={this.props.users.userLogged}/>
     }else{
       return <UserProfile user={this.props.users.userLogged}/>
     }
