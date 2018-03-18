@@ -55,7 +55,7 @@ class CoSignUp extends React.Component {
 
     let newUser = {
       name:this.state.name,
-      about:this.state.about,
+      bio:this.state.about,
       fullBio:PDF,
       email:this.state.email,
       ID:this.state.email.split('@')[0],

@@ -54,38 +54,37 @@ class RForm extends React.Component {
   beautyForm(){
     return(
       <div style={{margin:"2%"}}>
-    <Form size='large'>
-      <Segment stacked>
-        <Form.Input
-          fluid
-          icon='user outline'
-          iconPosition='left'
-          placeholder='Full Name'
-          onChange={this.handleFullName}
-        />
-        <Form.Input
-          fluid
-          icon='user'
-          iconPosition='left'
-          placeholder='E-mail address'
-          onChange={this.handleMail}
-        />
-        <Form.Input
-          fluid
-          icon='lock'
-          iconPosition='left'
-          placeholder='Password'
-          type='password'
-          onChange={this.handlePassword}
-        />
-        <Form.Field>
-          <Checkbox label='I want to be a reviewer' onChange={this.handleReviewer}/>
-        </Form.Field>
-
-      <Button color='orange' fluid size='large' onClick={this.handleRegister} >Sign-Up</Button>
-      </Segment>
-    </Form>
-  </div>
+        <Form size='large'>
+          <Segment stacked>
+            <Form.Input
+              fluid
+              icon='user outline'
+              iconPosition='left'
+              placeholder='Full Name'
+              onChange={this.handleFullName}
+            />
+            <Form.Input
+              fluid
+              icon='user'
+              iconPosition='left'
+              placeholder='E-mail address'
+              onChange={this.handleMail}
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+              onChange={this.handlePassword}
+            />
+            <Form.Field>
+              <Checkbox label='I want to be a reviewer' onChange={this.handleReviewer}/>
+            </Form.Field>
+          <Button color='orange' fluid size='large' onClick={this.handleRegister} >Sign-Up</Button>
+          </Segment>
+        </Form>
+      </div>
   )
 }
 

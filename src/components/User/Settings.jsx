@@ -5,6 +5,7 @@ import {updateUser,login,goToPage} from '../../actions/UsersActions';
 import {Grid, Divider, Form, Input, TextArea, Button, Image,Loader, Segment} from 'semantic-ui-react';
 
 let IMAGE = null;
+let PDF = null;
 class Settings extends React.Component {
   constructor(props){
     super(props);
@@ -18,7 +19,9 @@ class Settings extends React.Component {
       passwordA:null,
       passwordNotEquals:false,
       completed:true,
+      completedPDF:true,
       photo: null,
+      pdf:null,
     }
     this.handleFullName = this.handleFullName.bind(this);
     this.handleBio = this.handleBio.bind(this);
@@ -27,9 +30,11 @@ class Settings extends React.Component {
     this.handlePassword = this.handlePassword.bind(this);
     this.handlePasswordA = this.handlePasswordA.bind(this);
     this.handlePhoto = this.handlePhoto.bind(this);
+    this.handlePDF = this.handlePDF.bind(this);
 
     this.handleUpdate = this.handleUpdate.bind(this);
     this.uploadPhoto = this.uploadPhoto.bind(this);
+    this.uploadPDF = this.uploadPDF.bind(this);
   }
   handleFullName = (e)=> this.setState({fullName:e.target.value})
   handleBio = (e)=> this.setState({bio:e.target.value})
@@ -38,6 +43,7 @@ class Settings extends React.Component {
   handlePassword = (e)=> this.setState({password:e.target.value})
   handlePasswordA = (e)=> this.setState({passwordA:e.target.value})
   handlePhoto = (e)=> this.setState({photo:e.target.files[0]})
+  handlePDF = (e)=> this.setState({pdf:e.target.files[0]})
 
 
   handleUpdate(){
@@ -53,6 +59,8 @@ class Settings extends React.Component {
     if(this.state.age) userUpdated.age = this.state.age;
     if(this.state.password) userUpdated.password = this.state.password;
     if(IMAGE != null) userUpdated.photo = IMAGE;
+    if(PDF != null) userUpdated.fullBio = PDF;
+
     console.log(userUpdated);
     this.props.updateUser(userUpdated);
     this.props.goToPage("USER_PROFILE");
@@ -99,6 +107,9 @@ class Settings extends React.Component {
 
 
   renderChangePhoto(){
+    /*
+      This Component is to change the profile photo
+    */
     return(
       <div>
       <Segment>
@@ -114,6 +125,31 @@ class Settings extends React.Component {
       </Segment>
       </div>
     )
+  }
+
+  renderChangePDF(){
+    /*
+      This component if to get PDF on COMPANY and REVIEWERS
+    */
+    if(this.props.users.userLogged.fullBio)
+      return(
+        <div style={{textAlign:'center'}}>
+          <Segment>
+            <Loader active={!this.state.completedPDF}/>
+            <a href={this.props.users.userLogged.fullBio}
+               target="_blank">
+              <h3>Current Bio</h3>
+            </a>
+            <br/>
+            <Form.Field
+              onChange={this.handlePDF}
+              control={Input}
+              fluid
+              type="file"/>
+            <Button fluid onClick={this.uploadPDF}>Upload new bio</Button>
+          </Segment>
+        </div>
+      )
   }
 
   uploadPhoto(event) {
@@ -136,6 +172,26 @@ class Settings extends React.Component {
       this.handleUpdate();
     });
   }
+  uploadPDF(e){
+    /*
+      This function will upload a PDF
+    */
+    const file = this.state.pdf;
+    console.log(file);
+    const storageRef = storeDB.ref(`comPDF/${file.name}`);
+    const task = storageRef.put(file);
+    task.on('state_changed', snapshot => {
+      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      this.setState({completedPDF : false});
+      console.log('Upload is ' + progress + '% done');
+    }, function (error) {
+      console.log(error.message);
+    }, () => {
+      this.setState({completedPDF : true});
+      PDF= task.snapshot.downloadURL;
+      this.handleUpdate();
+    });
+  }
 
   render() {
     return (
@@ -149,7 +205,9 @@ class Settings extends React.Component {
           <Grid.Column width={5} >
             <h3>Profile Picture</h3>
             <Divider/>
-            {this.renderChangePhoto()}
+              {this.renderChangePhoto()}
+            <Divider/>
+              {this.renderChangePDF()}
           </Grid.Column>
         </Grid>
       </div>

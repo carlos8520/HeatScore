@@ -12,13 +12,14 @@ class Profile extends React.Component {
     return(
         <div>
           <Card>
+          <Image src={this.props.user.photo}/>
            <Card.Content>
              <Card.Header>
                {this.props.user.name}
              </Card.Header>
              <Card.Meta>
                <span className='date'>
-                 <a onClick={this.props.user.fullBio}>
+                 <a href={this.props.user.fullBio} target="_blank">
                    Full Company
                  </a>
                </span>
