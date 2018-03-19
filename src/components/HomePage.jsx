@@ -15,8 +15,7 @@ import CoSignUp from './Companies/CompaniesSignUp';
 class HPage extends React.Component{
 
   componentDidMount() {
-    this.props.getUsers();
-    this.props.login(this.props.users.userLogged||{userName:'udc',password:'udc'});
+    this.props.login(this.props.users.userLogged||{});
   }
 
   renderPage(){

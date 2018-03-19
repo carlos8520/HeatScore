@@ -24,9 +24,9 @@ class CrContest extends React.Component {
     this.handleDescription = this.handleDescription.bind(this);
   }
   handleTitle = (e) => this.setState({title:e.target.value})
-  handleFullCont = (e) => this.setState({title:e.target.files[0]})
-  handleCloseDate = (date) => this.setState({title:date})
-  handleDescription = (e) => this.setState({title:e.target.value})
+  handleFullCont = (e) => this.setState({fullContest:e.target.files[0]})
+  handleCloseDate = (date) => this.setState({closeDate:date})
+  handleDescription = (e) => this.setState({description:e.target.value})
 
   renderForm(){
     return(
@@ -48,7 +48,7 @@ class CrContest extends React.Component {
              onChange={this.handleDescription}
              />
            <Form.Group widths='equal'>
-             <h3>Full Description </h3>
+             <h3>Full Contest </h3>
              <Form.Field
                fluid
                onChange={this.handleFullCont}

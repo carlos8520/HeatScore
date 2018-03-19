@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import {Card, Icon, Image, Grid, Rating, Transition} from 'semantic-ui-react';
+import {Card, Icon, Image, Grid, Rating, Transition, Divider} from 'semantic-ui-react';
 import ProjectCard from '../Projects/ProjectCard';
 import {goToPage, getProjects,login,renderProject} from '../../actions/UsersActions';
 import {RENDER_PROJ} from '../../actions/constants';
+import CreateProject from './CreateProject';
 import {connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -72,6 +73,8 @@ class Profile extends React.Component {
           <Grid.Column width={4}>
             <center>
               {this.userCard()}
+              <Divider/>
+              <CreateProject/>
             </center>
           </Grid.Column>
           <Grid.Column width={12}>
