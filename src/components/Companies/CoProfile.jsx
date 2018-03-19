@@ -1,13 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import {Card, Image, Grid, Icon, } from 'semantic-ui-react';
-import {login} from '../../actions/UsersActions';
+import CreateContest from './CreateContest';
+import {Card, Image, Grid, Icon, Divider, Button} from 'semantic-ui-react';
+import {login, goToPage} from '../../actions/UsersActions';
+import {CREATE_CONTEST} from '../../actions/constants';
+import ContestCard from './ContestCard';
 
 class Profile extends React.Component {
   componentWillMount() {
   //  this.props.login(this.props.users.userLogged);
   }
+
   userCard(){
     return(
         <div>
@@ -35,6 +39,8 @@ class Profile extends React.Component {
              </a>
            </Card.Content>
          </Card>
+         <Divider/>
+         <CreateContest/>
         </div>
     );
   }
@@ -49,6 +55,8 @@ class Profile extends React.Component {
             </center>
           </Grid.Column>
           <Grid.Column width={12}>
+            <h1>My Contests</h1>
+            <ContestCard/>
           </Grid.Column>
         </Grid>
       </div>
@@ -59,6 +67,6 @@ class Profile extends React.Component {
 let CoProfile = (Profile);
 CoProfile = connect(state=>({
 	users: state.users
-}),{login})(CoProfile);
+}),{login,goToPage})(CoProfile);
 
 export default CoProfile;

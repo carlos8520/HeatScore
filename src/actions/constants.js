@@ -19,3 +19,4 @@ export const RENDER_PROJ = "RENDER_PROJ";
 export const FOR_COMPANIES = "FOR_COMPANIES";
 export const CO_SIGN_UP = "CO_SIGN_UP";
 export const LOG_IN_CO = "LOG_IN_CO";
+export const CREATE_CONTEST = "CREATE_CONTEST";
