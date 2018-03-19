@@ -11,6 +11,8 @@ import UserSettings from './User/Settings';
 import ProjectDescription from './Projects/ProjectDescription';
 import ForCompanies from './Companies/ForCompanies';
 import CoSignUp from './Companies/CompaniesSignUp';
+import CurrentContests from './Contests/CurrentContests';
+import FullContest from './Contests/FullContest';
 
 class HPage extends React.Component{
 
@@ -39,6 +41,10 @@ class HPage extends React.Component{
       return <ForCompanies/>
     else if(pageLoaded == pages.CO_SIGN_UP)
       return <CoSignUp/>
+    else if(pageLoaded == pages.CURRENT_CONTESTS)
+      return <CurrentContests/>
+    else if(pageLoaded == pages.FULL_CONTEST)
+      return <FullContest/>
   }
 
   render() {

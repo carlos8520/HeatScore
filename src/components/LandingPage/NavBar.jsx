@@ -8,7 +8,8 @@ import {
   USER_PROFILE,
   USER_SETTINGS,
   SIGN_OUT,
-  FOR_COMPANIES
+  FOR_COMPANIES,
+  CURRENT_CONTESTS
 } from '../../actions/constants';
 
 const options = [
@@ -78,11 +79,15 @@ class Nav extends React.Component {
     const {activeItem} = this.state;
 
     if (this.props.users.userLogged) {
-      if (this.props.users.userLogged.type == "USER") 
-        return (<Menu.Item name='current Contests' active={activeItem === 'for Users'}/>)
+      if (this.props.users.userLogged.type == "USER")
+        return (<Menu.Item name='current Contests' active={activeItem === 'for Users'} onClick={() => {
+            this.props.goToPage(CURRENT_CONTESTS)
+          }}/>)
     } else {
       return (<Menu.Menu>
-        <Menu.Item name='for Users' active={activeItem === 'for Users'}/>
+        <Menu.Item name='for Users' active={activeItem === 'for Users'} onClick={() => {
+            this.props.goToPage(CURRENT_CONTESTS)
+          }}/>
         <Menu.Item name='for Companies' active={activeItem === 'for Companies'} onClick={() => {
             this.props.goToPage(FOR_COMPANIES)
           }}/>

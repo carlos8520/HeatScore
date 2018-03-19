@@ -1,10 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ContestCard from '../Companies/ContestCard'
 
 class CurrentContests extends React.Component {
   render () {
     return(
-      <h1>CurrentContests</h1>
+      <div>
+        <center>
+          <h1>CurrentContests</h1>
+          <ContestCard/>
+        </center>
+      </div>
     )
   }
 }

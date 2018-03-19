@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {Card, Icon, Image, Grid, Rating, Transition} from 'semantic-ui-react';
-import {goToPage, getProjects,login,renderProject} from '../../actions/UsersActions';
-import {RENDER_PROJ} from '../../actions/constants';
+import {goToPage} from '../../actions/UsersActions';
+import {RENDER_PROJ,FULL_CONTEST} from '../../actions/constants';
 import {connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -13,12 +13,12 @@ class ContestC extends Component{
   render(){
     return(
       <Card>
-        <a onClick={this.goToProject}>
+        <a onClick={()=>{this.props.goToPage(FULL_CONTEST)}}>
           <Image src="https://portal.ucol.mx/content/micrositios/188/image/Escudos%202017/UDC_2L_Abajo/01%20UdeC%202L%20872.png" />
         </a>
         <Card.Content>
           <Card.Header>
-            <a>
+            <a onClick={()=>{this.props.goToPage(FULL_CONTEST)}}>
               UDC Financía tu Proyecto
             </a>
           </Card.Header>
@@ -38,4 +38,10 @@ class ContestC extends Component{
     )
   }
 }
-export default ContestC;
+
+let ContestCard = (ContestC);
+ContestCard = connect(state=>({
+	users: state.users
+}),{goToPage})(ContestCard);
+
+export default ContestCard;
