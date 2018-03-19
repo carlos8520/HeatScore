@@ -19,7 +19,7 @@ class ContestC extends Component{
         <Card.Content>
           <Card.Header>
             <a onClick={()=>{this.props.goToPage(FULL_CONTEST)}}>
-              UDC Financía tu Proyecto
+              UDC Financia tu Proyecto
             </a>
           </Card.Header>
           <Card.Meta>

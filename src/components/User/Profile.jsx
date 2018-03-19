@@ -7,6 +7,7 @@ import {connect } from 'react-redux';
 import _ from 'lodash';
 import CoProfile from '../Companies/CoProfile';
 import UserProfile from './UserProfile';
+import RevProfile from '../Reviewers/RevProfile';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -17,6 +18,8 @@ class Profile extends React.Component {
   render() {
     if(this.props.users.userLogged.type == "COMPANY"){
       return <CoProfile user={this.props.users.userLogged}/>
+    }else if(this.props.users.userLogged.type == "REVIEWER"){
+      return <RevProfile user={this.props.users.userLogged}/>
     }else{
       return <UserProfile user={this.props.users.userLogged}/>
     }
