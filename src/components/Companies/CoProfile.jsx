@@ -57,7 +57,6 @@ class Profile extends React.Component {
           </Grid.Column>
           <Grid.Column width={12}>
             <h1>My Contests</h1>
-            <ContestCard/>
             <ContestContainer/>
           </Grid.Column>
         </Grid>

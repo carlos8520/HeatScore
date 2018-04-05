@@ -19,7 +19,7 @@ class ContestC extends Component{
         <Card.Content>
           <Card.Header>
             <a onClick={()=>{this.props.goToPage(FULL_CONTEST)}}>
-              UDC Financia tu Proyecto
+              {this.props.contest.title}
             </a>
           </Card.Header>
           <Card.Meta>
@@ -28,11 +28,11 @@ class ContestC extends Component{
            </span>
          </Card.Meta>
           <Card.Description>
-            UDC Financía tu proyecto o start-up
+            {this.props.contest.description}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-            3 Evaluators
+            Evaluadores!
         </Card.Content>
       </Card>
     )

@@ -3,23 +3,27 @@ import {connect} from 'react-redux';
 import {getContests} from '../../actions/CompanyActions';
 import _ from 'lodash';
 import ContestCard from './ContestCard';
+import {Card} from 'semantic-ui-react';
 
 class Container extends Component {
-
-  componentWillMount(){
+  
+  componentWillMount() {
     this.props.getContests(this.props.users.userLogged.fullName);
   }
+  
 
   render() {
     return (
       <div>
+        <Card.Group>
         {
           _.map(this.props.users.companyContests,(c,i)=>{
             return(
-              <ContestCard/>
+              <ContestCard contest={c} key={i}/>
             )
           })
         }
+        </Card.Group>
       </div>
     );
   }

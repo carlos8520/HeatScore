@@ -26,6 +26,7 @@ export function submitContest(values){
 }
 
 export function getContests(user){
+  console.log("User = " + user);
   return dispatch => database.ref('CONTESTS/').orderByChild("company").equalTo(user).on('value',
     (snapshot) => {
       dispatch({
