@@ -15,7 +15,7 @@ import {
   Form,
   Segment,
   Button,
-  Input,
+  Input
 } from 'semantic-ui-react'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
@@ -49,12 +49,11 @@ class CrContest extends React.Component {
   handleFullCont = (e) => this.setState({fullContest: e.target.files[0]})
   handleCloseDate = (date) => this.setState({closeDate: date})
   handleDescription = (e) => this.setState({description: e.target.value})
-  handleOpen = () => this.setState({ completed: true })
-  handleClose = () => this.setState({ completed: false })
+  handleOpen = () => this.setState({completed: true})
+  handleClose = () => this.setState({completed: false, progress:0})
 
-  handleSubmit(){
-    if (this.state.title == null || this.state.description == null ||
-      this.state.fullContest == null || this.state.closeDate == null)
+  handleSubmit() {
+    if (this.state.title == null || this.state.description == null || this.state.fullContest == null || this.state.closeDate == null)
       return;
 
     const file = this.state.fullContest;
@@ -63,12 +62,12 @@ class CrContest extends React.Component {
     const task = storageRef.put(file);
     task.on('state_changed', snapshot => {
       let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      this.setState({ progress: progress });
+      this.setState({progress: progress});
       console.log('Upload is ' + progress + '% done');
-    }, function (error) {
+    }, function(error) {
       console.log(error.message);
     }, () => {
-      this.setState({ completed: true });
+      this.setState({completed: true});
       let newContest = new Object();
 
       newContest.title = this.state.title;
@@ -76,13 +75,14 @@ class CrContest extends React.Component {
       newContest.fullContest = task.snapshot.downloadURL;
       newContest.closeDate = this.state.closeDate._d.toDateString();
       newContest.company = this.props.users.userLogged.fullName;
-      newContest.ID = (this.state.title.split(' ')).join('.');
+      newContest.ID = (this.state.title.split(' ')).join('_');
       newContest.openDate = moment().format('L');
 
       this.props.submitContest(newContest);
-      this.handleClose();
-    });
 
+      setTimeout(()=>{this.handleClose()},3000);
+
+    });
 
   }
 
@@ -94,25 +94,26 @@ class CrContest extends React.Component {
         <Segment stacked>
           <Form.Input fluid icon='user outline' iconPosition='left' placeholder='Contest Name' onChange={this.handleTitle}/>
           <Form.Input fluid icon='user' iconPosition='left' placeholder='Give your participants a short description' onChange={this.handleDescription}/>
+          <DatePicker onChange={this.handleCloseDate} placeholderText={'Click to select the Close Date'} selected={this.state.closeDate}/>
           <Form.Group widths='equal'>
             <h3>Full Contest
             </h3>
             <Form.Field fluid onChange={this.handleFullCont} control={Input} type="file" accept=".pdf, |images/*"/>
           </Form.Group>
-          <DatePicker onChange={this.handleCloseDate} placeholderText={'Click to select the Close Date'} selected={this.state.closeDate}/>
         </Segment>
       </Form>
     </div>)
   }
 
   render() {
-    return (
-    <Modal trigger={<Button fluid onClick={this.handleOpen}> Create new Contest</Button>} size='small' open={this.state.completed} onClose={this.handleClose}>
+    return (<Modal trigger={<Button fluid onClick = {
+        this.handleOpen
+      } > Create new Contest</Button>} size='small' open={this.state.completed} onClose={this.handleClose}>
       <Header icon='trophy' content='Create a new contest!'/>
       <Modal.Content>
         <center>
           {this.renderForm()}
-          <Progress percent={this.state.progress} indicating />
+          <Progress percent={this.state.progress} indicating/>
         </center>
       </Modal.Content>
       <Modal.Actions>
@@ -129,9 +130,6 @@ class CrContest extends React.Component {
   }
 }
 
-
 let CreateContest = (CrContest);
-CreateContest = connect(state => ({
-  users: state.users
-}), { submitContest })(CreateContest);
+CreateContest = connect(state => ({users: state.users}), {submitContest})(CreateContest);
 export default CreateContest;

@@ -28,6 +28,10 @@ export default function(state={},action){
       return Object.assign({},state,{
         pageLoaded:action.payload
       })
+    case types.GET_CONTESTS:
+      return Object.assign({},state,{
+        companyContests:action.payload
+      })
     default:
       return state;
   }

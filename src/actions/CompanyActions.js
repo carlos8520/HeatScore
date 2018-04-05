@@ -24,3 +24,13 @@ export function submitContest(values){
     })
   });
 }
+
+export function getContests(user){
+  return dispatch => database.ref('CONTESTS/').orderByChild("company").equalTo(user).on('value',
+    (snapshot) => {
+      dispatch({
+        type: types.GET_CONTESTS,
+        payload: snapshot.val()
+      })
+    })
+}

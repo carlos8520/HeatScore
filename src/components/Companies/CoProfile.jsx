@@ -6,6 +6,7 @@ import {Card, Image, Grid, Icon, Divider, Button} from 'semantic-ui-react';
 import {login, goToPage} from '../../actions/UsersActions';
 import {CREATE_CONTEST} from '../../actions/constants';
 import ContestCard from './ContestCard';
+import ContestContainer from './ContestContainer';
 
 class Profile extends React.Component {
   componentWillMount() {
@@ -57,6 +58,7 @@ class Profile extends React.Component {
           <Grid.Column width={12}>
             <h1>My Contests</h1>
             <ContestCard/>
+            <ContestContainer/>
           </Grid.Column>
         </Grid>
       </div>

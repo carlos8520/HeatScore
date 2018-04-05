@@ -16,9 +16,12 @@ export const USER_PROFILE = "USER_PROFILE";
 export const USER_SETTINGS = "USER_SETTINGS";
 export const USER_DASHBOARD = "USER_DASHBOARD";
 export const RENDER_PROJ = "RENDER_PROJ";
+
 export const FOR_COMPANIES = "FOR_COMPANIES";
 export const CO_SIGN_UP = "CO_SIGN_UP";
 export const LOG_IN_CO = "LOG_IN_CO";
+
 export const CREATE_CONTEST = "CREATE_CONTEST";
 export const CURRENT_CONTESTS = "CURRENT_CONTESTS";
+export const GET_CONTESTS = "GET_CONTESTS";
 export const FULL_CONTEST = "FULL_CONTEST";
