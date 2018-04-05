@@ -12,7 +12,7 @@ class CoSignUp extends React.Component {
     super(props);
 
     this.state={
-      name:null,
+      fullName:null,
       about:null,
       fullBio:null,
       email:null,
@@ -34,7 +34,7 @@ class CoSignUp extends React.Component {
 
     this.handleSignUp = this.handleSignUp.bind(this);
   }
-  handleFullName = (e) => this.setState({name:e.target.value})
+  handleFullName = (e) => this.setState({fullName:e.target.value})
   handleAbout = (e) => this.setState({about:e.target.value})
   handleEmail = (e) => this.setState({email:e.target.value})
   handleFullBio = (e) => this.setState({fullBio:e.target.files[0]})
@@ -44,7 +44,7 @@ class CoSignUp extends React.Component {
 
   handleSignUp(){
     console.log(this.state);
-    if(this.state.name==null||this.state.about==null|| PDF==null||
+    if(this.state.fullName==null||this.state.about==null|| PDF==null||
       this.state.email==null||this.state.password==null||this.state.passwordB==null){
         this.setState({modalOpen:true});
         return;
@@ -54,7 +54,7 @@ class CoSignUp extends React.Component {
     }
 
     let newUser = {
-      name:this.state.name,
+      fullName:this.state.fullName,
       bio:this.state.about,
       fullBio:PDF,
       email:this.state.email,

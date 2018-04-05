@@ -41,12 +41,23 @@ class Nav extends React.Component {
   }
   handleItemClick = (e, {name}) => this.setState({activeItem: name})
   handleGoToPage = (e, {value}) => this.props.goToPage(value)
+/**
 
+ userLogged: {
+   ID: 'udc',
+   bio: 'Universidad De Colima',
+   email: 'udc@udc',
+   fullBio: 'https://firebasestorage.googleapis.com/v0/b/heatscore-7df3e.appspot.com/o/comPDF%2FC%20-%20Tema%206.pdf?alt=media&token=8c21c726-8f85-4c1f-add8-27eb3653a1bc',
+   name: 'UDC',
+   password: 'udc',
+   photo: 'https://firebasestorage.googleapis.com/v0/b/heatscore-7df3e.appspot.com/o/usersPhotos%2Flogo2.jpg?alt=media&token=d4b84596-9947-4084-8325-567c4ab8a793',
+   type: 'COMPANY
+*/
   trigger() {
     let userName = this.props.users.userLogged.fullName;
     let photo = this.props.users.userLogged.photo;
     return (<span>
-      <Image avatar="avatar" src={photo}/> {userName}
+      <Image avatar src={photo}/> {userName}
     </span>)
   }
 
@@ -62,11 +73,11 @@ class Nav extends React.Component {
       return (<div>
         <Menu.Item>
           <Button.Group>
-            <Button positive="positive" onClick={() => {
+            <Button positive onClick={() => {
                 this.props.goToPage(LOG_IN_FORM)
               }}>Log In</Button>
             <Button.Or/>
-            <Button primary="primary" onClick={() => {
+            <Button primary onClick={() => {
                 this.props.goToPage(SIGN_UP_FORM)
               }}>Sign Up</Button>
           </Button.Group>

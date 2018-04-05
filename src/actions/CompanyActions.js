@@ -12,5 +12,15 @@ export function registerCompany(values) {
       })
     })
   });
+}
 
+export function submitContest(values){
+  return dispatch => database.ref('CONTESTS/'+values.ID).set(values).then(()=>{
+    database.ref('CONTESTS/' + values.ID).once('value').then((snapshot)=>{
+      dispatch({
+        type: types.CREATE_CONTEST,
+        payload: snapshot.val()
+      })
+    })
+  });
 }
