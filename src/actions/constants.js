@@ -5,7 +5,7 @@ export const LOG_IN_USER = "LOG_IN_USER";
 export const SIGN_OUT = "SIGN_OUT";
 export const USER_PROJECTS = "USER_PROJECTS";
 export const DEF_PROJ_SEEN = "DEF_PROJ_SEEN";
-
+export const SUB_PROJECT = "SUB_PROJECT";
 
 // Page to load
 export const GO_TO_PAGE = "GO_TO_PAGE";
@@ -24,4 +24,5 @@ export const LOG_IN_CO = "LOG_IN_CO";
 export const CREATE_CONTEST = "CREATE_CONTEST";
 export const CURRENT_CONTESTS = "CURRENT_CONTESTS";
 export const GET_CONTESTS = "GET_CONTESTS";
+export const GET_CONTESTS_FOR_USERS = "GET_CONTESTS_FOR_USERS";
 export const FULL_CONTEST = "FULL_CONTEST";

@@ -8,7 +8,7 @@ class CurrentContests extends React.Component {
       <div>
         <center>
           <h1>CurrentContests</h1>
-          <ContestCard/>
+          
         </center>
       </div>
     )

@@ -32,6 +32,10 @@ export default function(state={},action){
       return Object.assign({},state,{
         companyContests:action.payload
       })
+    case types.GET_CONTESTS_FOR_USERS:
+      return Object.assign({},state,{
+        liveContests:action.payload
+      })
     default:
       return state;
   }

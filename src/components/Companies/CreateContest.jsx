@@ -75,6 +75,7 @@ class CrContest extends React.Component {
       newContest.fullContest = task.snapshot.downloadURL;
       newContest.closeDate = this.state.closeDate._d.toDateString();
       newContest.company = this.props.users.userLogged.fullName;
+      newContest.projectsRegistered = "";
       newContest.ID = (this.state.title.split(' ')).join('_');
       newContest.openDate = moment().format('L');
 
@@ -106,9 +107,7 @@ class CrContest extends React.Component {
   }
 
   render() {
-    return (<Modal trigger={<Button fluid onClick = {
-        this.handleOpen
-      } > Create new Contest</Button>} size='small' open={this.state.completed} onClose={this.handleClose}>
+    return (<Modal trigger={<Button fluid onClick = {this.handleOpen} > Create new Contest</Button>} size='small' open={this.state.completed} onClose={this.handleClose}>
       <Header icon='trophy' content='Create a new contest!'/>
       <Modal.Content>
         <center>
@@ -117,7 +116,7 @@ class CrContest extends React.Component {
         </center>
       </Modal.Content>
       <Modal.Actions>
-        <Button basic color='red'>
+        <Button basic color='red' onClick={this.handleClose}>
           <Icon name='remove'/>
           Cancel
         </Button>
