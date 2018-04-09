@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Container, Image, Header, Button, Tab, Divider} from 'semantic-ui-react'
 import ProjectComments from './ProjectComments'
+import ProjectPDF from './ProjectPDF'
 //.projectSeen
 
 class PDescription extends React.Component {  
@@ -21,8 +22,8 @@ class PDescription extends React.Component {
   render () {
     const panes = [
       { menuItem: 'Project Information', render: () => <Tab.Pane>{this.renderProjectInfo()}</Tab.Pane> },
-      { menuItem: 'Project PDF', render: () => <Tab.Pane>Project PDF</Tab.Pane> },
-      { menuItem: 'Discussion', render: ()=> <Tab.Pane><ProjectComments/></Tab.Pane>}
+      { menuItem: 'Full Project', render: () => <Tab.Pane><ProjectPDF url={this.props.users.projectSeen.fullProject}/></Tab.Pane> },
+      { menuItem: 'Discussion', render: () => <Tab.Pane><ProjectComments/></Tab.Pane>}
     ]
 
     return(
