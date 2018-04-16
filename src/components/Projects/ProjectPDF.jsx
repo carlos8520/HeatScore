@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import PDFViewer from 'mgr-pdf-viewer-react'
 import PDF from 'react-pdf-js';
-
+/*
 class ProjectPDF extends React.Component {
   state = {};
 
@@ -59,7 +59,7 @@ class ProjectPDF extends React.Component {
     )
   }
 }
-/*
+*/
 class ProjectPDF extends Component {
   render() {
     return (
@@ -69,5 +69,5 @@ class ProjectPDF extends Component {
     );
   }
 }
-*/
+
 export default ProjectPDF;

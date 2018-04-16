@@ -1,0 +1,26 @@
+.container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns:18rem auto;
+  grid-template-rows: 0.25fr 0.25fr auto;
+  justify-items:stretch;
+  align-items: stretch;
+  justify-content: stretch;
+  align-items: stretch;
+
+  grid-template-areas:"ProjectPhoto ProjectName"
+                      "ProjectPhoto ProjectDescription";
+  
+}
+
+.ProjectPhoto{
+  grid-area: ProjectPhoto;
+}
+
+.ProjectName{
+  grid-area: ProjectName;
+}
+
+.ProjectDescription{
+  grid-area: ProjectDescription;
+}

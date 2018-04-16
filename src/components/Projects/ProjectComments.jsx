@@ -43,7 +43,7 @@ class PComments extends Component {
           {
             _.map(this.state.comments, (c, i) => {
               return(
-                <Comment>
+                <Comment key={i}>
                   <Comment.Avatar src={c.photo}/>
                   <Comment.Content>
                     <Comment.Author as='a'>{c.autor}</Comment.Author>
