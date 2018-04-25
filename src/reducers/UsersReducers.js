@@ -10,6 +10,11 @@ export default function(state={},action){
       return Object.assign({}, state, {     //no estoy cambiando el state si no que solo estoy
           userLogged: action.payload,     // asignando lo que necesito, y con el Object.Assign
           pageLoaded: types.USER_PROFILE, // Creo un objeto del estado y las nuevas propiedades
+      },{
+        showMessage:{
+          title:"Log in success",
+          content:"You have successfully logged in!"
+        }
       });
     case types.USER_PROJECTS:
       return Object.assign({},state,{
@@ -37,6 +42,8 @@ export default function(state={},action){
         liveContests:action.payload
       })
     case types.SHOW_MESSAGE:
+    console.log("shoud assign");
+    
       return Object.assign({},state,{
         showMessage:action.payload
       })

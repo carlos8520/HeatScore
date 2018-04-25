@@ -75,10 +75,12 @@ export function login(values) {
             payload: snapshot.val()
           })
         } else {
+          showMessage({title: "Log in failed", content: "Your password is incorrect!"})
           console.log("Password Incorrect");
           return false;
         }
       } else {
+        showMessage({title: "Log in failed", content: "We have not found you :("})
         return false;
       }
     });
@@ -173,8 +175,11 @@ export function putProjectOnContest(contest, projectID) {
  *
  */
 export function showMessage(values){
-  return dispatch => dispatch({
-    type: types.SHOW_MESSAGE,
-    payload: values
-  })
+  console.log(values);
+  return dispatch => {
+    dispatch({
+      type: types.SHOW_MESSAGE,
+      payload: values
+    })
+  }
 }

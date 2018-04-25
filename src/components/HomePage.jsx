@@ -13,6 +13,7 @@ import ForCompanies from './Companies/ForCompanies';
 import CoSignUp from './Companies/CompaniesSignUp';
 import CurrentContests from './Contests/CurrentContests';
 import FullContest from './Contests/FullContest';
+import Messages from './LandingPage/Messages';
 
 class HPage extends React.Component{
 
@@ -51,6 +52,7 @@ class HPage extends React.Component{
     return (
       <div>
         <NavBar/>
+        <Messages/>
         {
           this.renderPage()
         }
