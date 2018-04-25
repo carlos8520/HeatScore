@@ -166,3 +166,15 @@ export function putProjectOnContest(contest, projectID) {
   return dispatch => database.ref().update(updates);
 
 }
+
+/**
+ *    
+ * @param {Object} values An object which contains the text of the message and the style of the message
+ *
+ */
+export function showMessage(values){
+  return dispatch => dispatch({
+    type: types.SHOW_MESSAGE,
+    payload: values
+  })
+}

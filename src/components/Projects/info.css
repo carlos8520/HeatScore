@@ -15,6 +15,7 @@
 
 .ProjectPhoto{
   grid-area: ProjectPhoto;
+  max-height: 18rem;
 }
 
 .ProjectName{

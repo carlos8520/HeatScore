@@ -6,6 +6,7 @@ export const SIGN_OUT = "SIGN_OUT";
 export const USER_PROJECTS = "USER_PROJECTS";
 export const DEF_PROJ_SEEN = "DEF_PROJ_SEEN";
 export const SUB_PROJECT = "SUB_PROJECT";
+export const SHOW_MESSAGE = "SHOW_MESSAGE";
 
 // Page to load
 export const GO_TO_PAGE = "GO_TO_PAGE";
