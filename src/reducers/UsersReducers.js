@@ -36,6 +36,10 @@ export default function(state={},action){
       return Object.assign({},state,{
         liveContests:action.payload
       })
+    case types.SHOW_MESSAGE:
+      return Object.assign({},state,{
+        showMessage:action.payload
+      })
     default:
       return state;
   }
