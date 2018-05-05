@@ -26,12 +26,28 @@ export function submitContest(values){
 }
 
 export function getContests(user){
-  console.log("User = " + user);
-  return dispatch => database.ref('CONTESTS/').orderByChild("company").equalTo(user).on('value',
-    (snapshot) => {
+  if(user){
+    console.log("User = " + user);
+    return dispatch => database.ref('CONTESTS/').orderByChild("company").equalTo(user).on('value',
+      (snapshot) => {
+        dispatch({
+          type: types.GET_CONTESTS,
+          payload: snapshot.val()
+        })
+      })
+  }else{
+    return dispatch => database.ref('CONTESTS/').on('value',(snapshot)=>{
       dispatch({
-        type: types.GET_CONTESTS,
-        payload: snapshot.val()
+        type:types.GET_CONTESTS,
+        payload:snapshot.val()
       })
     })
+  }
+}
+
+export function selectContest(values){
+  return dispatch => dispatch({
+    type: types.DEF_CONTEST_SEEN,
+    payload: values,
+  });
 }

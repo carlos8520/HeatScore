@@ -8,7 +8,7 @@ class FullContest extends React.Component {
         margin: "2%"
       }}>
       <br/>
-      <h1>UDC Financia tu Proyecto - Contest Description</h1>
+      <h1>{this.props.contest} - Contest Description</h1>
       <Divider/>
       <Table celled="celled" padded="padded">
         <Table.Header>

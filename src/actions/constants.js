@@ -5,6 +5,7 @@ export const LOG_IN_USER = "LOG_IN_USER";
 export const SIGN_OUT = "SIGN_OUT";
 export const USER_PROJECTS = "USER_PROJECTS";
 export const DEF_PROJ_SEEN = "DEF_PROJ_SEEN";
+export const DEF_CONTEST_SEEN = "DEF_CONTEST_SEEN";
 export const SUB_PROJECT = "SUB_PROJECT";
 export const SHOW_MESSAGE = "SHOW_MESSAGE";
 

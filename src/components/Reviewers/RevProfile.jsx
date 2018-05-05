@@ -6,32 +6,7 @@ import {login, goToPage} from '../../actions/UsersActions';
 import {CREATE_CONTEST} from '../../actions/constants';
 import ProjectsEvaluate from './ProjectsEvaluate';
 
-const ModalModalExample = () => (
-  <Modal trigger={<Button positive massive="true">Grade Project 1</Button>}>
-    <Modal.Header>Grade Project 1</Modal.Header>
-    <Modal.Content image>
-      <Modal.Description>
-        <center>
-          <Header>Default Profile Image</Header>
-          <input type="number"placeholder="10"/>
-        </center>
-      </Modal.Description>
-      <Modal.Actions>
-      <Button basic color='red'>
-        <Icon name='remove' /> Cancel
-      </Button>
-      <Button color='green'>
-        <Icon name='checkmark' /> Send
-      </Button>
-    </Modal.Actions>
-    </Modal.Content>
-  </Modal>
-)
-
 class Profile extends React.Component {
-  componentWillMount() {
-  //  this.props.login(this.props.users.userLogged);
-  }
 
   userCard(){
     return(
@@ -76,7 +51,6 @@ class Profile extends React.Component {
           </Grid.Column>
           <Grid.Column width={12}>
             <h1>Projects to grade</h1>
-            <ModalModalExample/>
             <ProjectsEvaluate/>
           </Grid.Column>
         </Grid>

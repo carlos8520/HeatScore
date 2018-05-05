@@ -25,6 +25,10 @@ export default function(state={},action){
       return Object.assign({},state,{
         projectSeen:action.payload
       })
+    case types.DEF_CONTEST_SEEN:
+      return Object.assign({},state,{
+        contestSeen:action.payload
+      })
     case types.SIGN_OUT:
       return Object.assign({},state,{
         userLogged: null,
