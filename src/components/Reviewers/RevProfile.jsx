@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Card, Image, Grid, Icon, Divider, Button, Modal, Header} from 'semantic-ui-react';
 import {login, goToPage} from '../../actions/UsersActions';
 import {CREATE_CONTEST} from '../../actions/constants';
+import ProjectsEvaluate from './ProjectsEvaluate';
 
 const ModalModalExample = () => (
   <Modal trigger={<Button positive massive="true">Grade Project 1</Button>}>
@@ -76,6 +77,7 @@ class Profile extends React.Component {
           <Grid.Column width={12}>
             <h1>Projects to grade</h1>
             <ModalModalExample/>
+            <ProjectsEvaluate/>
           </Grid.Column>
         </Grid>
       </div>

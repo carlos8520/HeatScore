@@ -75,13 +75,19 @@ export function login(values) {
             payload: snapshot.val()
           })
         } else {
-          showMessage({title: "Log in failed", content: "Your password is incorrect!"})
+          dispatch({
+            type:types.SHOW_MESSAGE,
+            payload:{
+              title:"Log in failed",
+              content:"Your user or password is incorrect!",
+              color:'red'
+            }
+          })
           console.log("Password Incorrect");
           return false;
         }
       } else {
-        showMessage({title: "Log in failed", content: "We have not found you :("})
-        return false;
+          return false;
       }
     });
 }
@@ -126,7 +132,15 @@ export function updateUser(values) {
   updates['/USERS/' + values.ID] = values;
 
   return dispatch => database.ref().update(updates).then((snapshot) => {
-    login(values)
+    login(values);
+    dispatch({
+      type:types.SHOW_MESSAGE,
+      payload:{
+        title:"Finished",
+        content:"You have updated your information!",
+        color:'green'
+      }
+    })
   });
 }
 
@@ -148,7 +162,16 @@ export function getContests() {
  * @param {Object} values An object that represents the new project
  */
 export function submitProject(values) {
-  return dispatch => database.ref('PROJECTS/' + values.ID).set(values);
+  return dispatch => database.ref('PROJECTS/' + values.ID).set(values).then(()=>{
+    dispatch({
+      type:types.SHOW_MESSAGE,
+      payload:{
+        title:"Done",
+        color:'blue',
+        content:"Project has sucessfully been uploaded"
+      }
+    })
+  });
 }
 
 /**
@@ -175,11 +198,22 @@ export function putProjectOnContest(contest, projectID) {
  *
  */
 export function showMessage(values){
-  console.log(values);
   return dispatch => {
     dispatch({
       type: types.SHOW_MESSAGE,
       payload: values
+    })
+  }
+}
+
+/**
+ * this function will delete de message 
+ */
+export function quitMessage(){
+  return dispatch =>{
+    dispatch({
+      type:types.SHOW_MESSAGE,
+      payload:null
     })
   }
 }

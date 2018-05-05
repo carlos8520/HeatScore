@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { quitMessage} from '../../actions/UsersActions';
 import {Message} from 'semantic-ui-react';  
 
 class MessageContainer extends Component {
   constructor(){
     super();
-
-    this.state = {
-      visible:true
-    }
   }
   handleDismiss = () => {
-    this.setState({ visible: false })
+    this.props.quitMessage();
   }
 
   render() {
-    if(this.props.users.showMessage && this.state.visible){
+    if(this.props.users.showMessage){
       return(
         <div>
         <center>
-          <Message
-          onDismiss={this.handleDismiss}
-          header={this.props.users.showMessage.Title}
-          content={this.props.users.showMessage.content}
-          />
+          <Message 
+            color={this.props.users.showMessage.color}
+            onDismiss={this.handleDismiss}
+          >
+            <Message.Header>{this.props.users.showMessage.Title}</Message.Header>
+            <p>{this.props.users.showMessage.content}</p>
+          </Message>
         </center>
         </div>
       )
@@ -39,7 +38,7 @@ class MessageContainer extends Component {
 let Messages = (MessageContainer);
 Messages = connect(state =>({
   users:state.users
-}))(Messages);
+}), { quitMessage })(Messages);
 
 
 export default Messages;

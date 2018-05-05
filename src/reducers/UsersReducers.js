@@ -13,7 +13,8 @@ export default function(state={},action){
       },{
         showMessage:{
           title:"Log in success",
-          content:"You have successfully logged in!"
+          content:"You have successfully logged in!",
+          color:'blue'
         }
       });
     case types.USER_PROJECTS:
@@ -42,11 +43,14 @@ export default function(state={},action){
         liveContests:action.payload
       })
     case types.SHOW_MESSAGE:
-    console.log("shoud assign");
-    
       return Object.assign({},state,{
         showMessage:action.payload
       })
+    case types.FETCH_EV_PROJETS:
+      return Object.assign({},state,{
+        evProjects :action.payload
+      })
+
     default:
       return state;
   }
