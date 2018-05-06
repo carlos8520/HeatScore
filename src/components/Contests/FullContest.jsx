@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Table, Header, Rating, Divider, Image} from 'semantic-ui-react'
 import {connect} from 'react-redux'
-import { getProjectsByContest} from '../../actions/UsersActions'
+import { getProjectsByContest, renderProject,goToPage} from '../../actions/UsersActions'
 import _ from 'lodash'
 
 
@@ -13,8 +13,13 @@ class ContestFull extends React.Component {
     this.props.getProjectsByContest(this.props.users.contestSeen.ID);
   }  
 
+  goToProject = (project) =>{
+    this.props.renderProject(project);
+    this.props.goToPage("RENDER_PROJ")
+  }
+
   renderRow(project,i){
-    let stars = project.points/project.nPoints;
+    let stars = 5*(project.points/project.nPoints)/10;
     let grade = project.evGrade != null ? project.evGrade : "Not graded yet";    
     console.log(grade);
     
@@ -23,7 +28,11 @@ class ContestFull extends React.Component {
         <Table.Cell>
           <Header as='h3' textAlign='center'>{project.autor}</Header>
         </Table.Cell>
-        <Table.Cell singleLine>{project.name}</Table.Cell>
+        <Table.Cell singleLine>
+          <Header as='h5'>
+            <a onClick={()=>this.goToProject(project)}>{project.name}</a>
+          </Header>
+        </Table.Cell>
         <Table.Cell>
           <Rating icon='star' defaultRating={stars} maxRating={5} disabled/>
         </Table.Cell>
@@ -79,6 +88,6 @@ class ContestFull extends React.Component {
 let FullContest = (ContestFull);
 FullContest = connect(state => ({
   users: state.users
-}), { getProjectsByContest })(FullContest);
+}), { getProjectsByContest, renderProject , goToPage})(FullContest);
 
 export default FullContest;
