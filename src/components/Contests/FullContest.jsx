@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Table, Header, Rating, Divider, Image} from 'semantic-ui-react'
+import {Table, Header, Rating, Divider, Image, Popup} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import { getProjectsByContest, renderProject,goToPage} from '../../actions/UsersActions'
 import _ from 'lodash'
@@ -29,9 +29,14 @@ class ContestFull extends React.Component {
           <Header as='h3' textAlign='center'>{project.autor}</Header>
         </Table.Cell>
         <Table.Cell singleLine>
-          <Header as='h5'>
-            <a onClick={()=>this.goToProject(project)}>{project.name}</a>
-          </Header>
+          <Popup
+            trigger={
+              <Header as='h5'>
+                <a onClick={() => this.goToProject(project)}>{project.name}</a>
+              </Header>            
+            }
+            content='See full project description'
+          />
         </Table.Cell>
         <Table.Cell>
           <Rating icon='star' defaultRating={stars} maxRating={5} disabled/>
