@@ -54,7 +54,10 @@ export default function(state={},action){
       return Object.assign({},state,{
         evProjects :action.payload
       })
-
+    case types.FETCH_CONT_PROJECTS:
+      return Object.assign({},state,{
+        contProjects: action.payload
+      })
     default:
       return state;
   }

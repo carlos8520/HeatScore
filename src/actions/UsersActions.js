@@ -217,3 +217,18 @@ export function quitMessage(){
     })
   }
 }
+
+/**
+ * This function will fetch all the projects in a contest
+ * 
+ * @param {String} contest an string that represents the ID of the contest
+ */
+export function getProjectsByContest(contest){
+  return dispatch => database.ref('PROJECTS/').orderByChild("contest").equalTo(contest).on('value',
+    (snapshot) => {
+      dispatch({
+        type: types.FETCH_CONT_PROJECTS,
+        payload: snapshot.val()
+      })
+    })  
+}
