@@ -21,8 +21,6 @@ class ContestFull extends React.Component {
   renderRow(project,i){
     let stars = 5*(project.points/project.nPoints)/10;
     let grade = project.evGrade != null ? project.evGrade : "Not graded yet";    
-    console.log(grade);
-    
     return(
       <Table.Row key={i}>
         <Table.Cell>

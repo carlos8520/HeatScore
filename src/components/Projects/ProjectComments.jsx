@@ -64,8 +64,10 @@ class PComments extends Component {
     else{
       return(
         <div>
-          <Form.TextArea onChange={(e) => { this.setState({ newComment: e.target.value }) }} />
-          <Button onClick={this.submitComment} content='Add Comment' labelPosition='left' icon='edit' primary />
+          <Form reply>
+            <Form.TextArea onChange={(e) => { this.setState({ newComment: e.target.value }) }} />
+            <Button onClick={this.submitComment} content='Add Comment' labelPosition='left' icon='edit' primary />
+          </Form>
         </div>
       )
     }
