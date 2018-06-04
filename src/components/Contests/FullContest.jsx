@@ -5,8 +5,6 @@ import {connect} from 'react-redux'
 import { getProjectsByContest, renderProject,goToPage} from '../../actions/UsersActions'
 import _ from 'lodash'
 
-
-
 class ContestFull extends React.Component {
 
   componentDidMount() {
