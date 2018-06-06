@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Table, Header, Rating, Divider, Image, Popup} from 'semantic-ui-react'
+import {Table, Header, Rating, Divider, Image, Popup, Button} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import { getProjectsByContest, renderProject,goToPage} from '../../actions/UsersActions'
 import _ from 'lodash'
+import ContestReviewers from '../Companies/ContestReviewers';
 
 class ContestFull extends React.Component {
 
@@ -52,7 +53,8 @@ class ContestFull extends React.Component {
         margin: "2%"
       }}>
       <br/>
-      <h1>{this.props.users.contestSeen.title} - Contest Description</h1>
+      <h1>{this.props.users.contestSeen.title} - Contest Description</h1> 
+      {this.props.users.userLogged && this.props.users.userLogged.type=="COMPANY"? <ContestReviewers/> : <div></div>}
       <Divider/>
       <Table celled padded>
         <Table.Header>
